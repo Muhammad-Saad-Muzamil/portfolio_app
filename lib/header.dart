@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_app/colours.dart'; // Import your colors file here.
+import 'package:url_launcher/url_launcher.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HeaderScreen extends StatelessWidget {
@@ -10,10 +11,10 @@ class HeaderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var namewidget = "\nMUHAMMAD\nSAAD\nMUZAMIL"
+    var namewidget = "\nMuhammad \nSaad \nMuzamil"
         .text
         .white
-        .xl6
+        .xl5
         .lineHeight(1)
         .size(context.isMobile ? 15 : 20)
         .bold
@@ -31,8 +32,8 @@ class HeaderScreen extends StatelessWidget {
                     CustomAppBar().shimmer(primaryColor: colours.accentColor),
                     30.heightBox,
                     namewidget,
-                    20.heightBox,
-                    VxBox().color(colours.accentColor).size(60, 10).make(),
+                    30.heightBox,
+                    VxBox().color(colours.accentColor).size(170, 10).make(),
                     30.heightBox,
                     SocialAccounts(),
                   ])
@@ -93,7 +94,38 @@ class SocialAccounts extends StatelessWidget {
       Icon(
         FontAwesomeIcons.twitter,
         color: colours.accentColor,
-      )
+      ).mdClick(() {
+        launch("https://twitter.com/MSAAD55385526");
+      }).make(),
+      10.widthBox,
+      Icon(
+        FontAwesomeIcons.instagram,
+        color: colours.accentColor,
+      ).mdClick(() {
+        launch("https://www.instagram.com/saad.muzamil/");
+      }).make(),
+      10.widthBox,
+      Icon(
+        FontAwesomeIcons.facebook,
+        color: colours.accentColor,
+      ).mdClick(() {
+        launch("https://www.facebook.com/m.saad.muzamil.1");
+      }).make(),
+      10.widthBox,
+      Icon(
+        FontAwesomeIcons.linkedin,
+        color: colours.accentColor,
+      ).mdClick(() {
+        launch("https://www.facebook.com/m.saad.muzamil.1");
+      }).make(),
+      10.widthBox,
+      Icon(
+        FontAwesomeIcons.github,
+        color: colours.accentColor,
+      ).mdClick(() {
+        launch("https://www.facebook.com/m.saad.muzamil.1");
+      }).make(),
+      10.widthBox,
     ].hStack();
   }
 }
