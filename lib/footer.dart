@@ -15,7 +15,7 @@ class FooterScreen extends StatelessWidget {
             [
               "Got a project?\nLet's talk.".text.center.white.xl2.make(),
               10.heightBox,
-              "mtechviral@gmail.com"
+              "muhammadsaadmuzamil@gmail.com"
                   .text
                   .color(colours.accentColor)
                   .semiBold
@@ -32,7 +32,7 @@ class FooterScreen extends StatelessWidget {
             [
               "Got a project?\nLet's talk.".text.center.white.xl2.make(),
               10.widthBox,
-              "mtechviral@gmail.com"
+              "muhammadsaadmuzamil@gmail.com"
                   .text
                   .color(colours.accentColor)
                   .semiBold
@@ -54,15 +54,6 @@ class FooterScreen extends StatelessWidget {
         10.heightBox,
         SocialAccounts(),
         30.heightBox,
-        [
-          "Made in India with".text.red500.make(),
-          10.widthBox,
-          Icon(
-            Icons.flutter_dash,
-            color: Vx.red500,
-            size: 14,
-          )
-        ].hStack(crossAlignment: CrossAxisAlignment.center)
       ],
       crossAlignment: CrossAxisAlignment.center,
     ).wFull(context).p16();

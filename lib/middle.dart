@@ -5,7 +5,7 @@ class MiddleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Vx.purple700,
+      color: Color(0xff212121),
       child: Flex(
           direction: context.isMobile ? Axis.vertical : Axis.horizontal,
           children: [
@@ -49,7 +49,7 @@ class ProjectWidget extends StatelessWidget {
         .box
         .p8
         .roundedLg
-        .neumorphic(color: Vx.purple700, elevation: 5, curve: VxCurve.flat)
+        .neumorphic(color: Vx.orange700, elevation: 2, curve: VxCurve.flat)
         .alignCenter
         .square(200)
         .make()
