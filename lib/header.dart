@@ -11,10 +11,10 @@ class HeaderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var namewidget = "\nMuhammad \nSaad \nMuzamil"
+    final namewidget = "M.Saad\nMuzamil"
         .text
         .white
-        .xl5
+        .xl6
         .lineHeight(1)
         .size(context.isMobile ? 15 : 20)
         .bold
@@ -25,26 +25,105 @@ class HeaderScreen extends StatelessWidget {
         child: VStack([
           ZStack(
             [
+              if (context.isMobile) 50.heightBox else 10.heightBox,
               PictureWidget(),
               Row(
                 children: [
                   VStack([
                     CustomAppBar().shimmer(primaryColor: colours.accentColor),
-                    30.heightBox,
+                    60.heightBox,
                     namewidget,
-                    30.heightBox,
-                    VxBox().color(colours.accentColor).size(170, 10).make(),
-                    30.heightBox,
+                    20.heightBox,
+                    // VxBox()
+                    //     .color(colours.accentColor)
+                    //     .size(60, 10)
+                    //     .make()
+                    //     .px4()
+                    //     .shimmer(primaryColor: colours.accentColor),
+                    // 30.heightBox,
                     SocialAccounts(),
-                  ])
+                  ]).pSymmetric(
+                    h: context.percentWidth * 10,
+                    v: 32,
+                  ),
+                  Expanded(
+                    child: VxResponsive(
+                      medium: IntroductionWidget()
+                          .pOnly(left: 120)
+                          .h(context.percentHeight * 60),
+                      large: IntroductionWidget()
+                          .pOnly(left: 120)
+                          .h(context.percentHeight * 60),
+                      fallback: const Offstage(),
+                    ),
+                  )
                 ],
-              )
-
-              // Place CustomAppBar directly in the ZStack
+              ).w(context.screenWidth)
             ],
           ),
         ]),
-      ).make(),
+      )
+          .size(context.screenWidth, context.percentHeight * 60)
+          .color(colours.secondaryColor)
+          .make(),
+    );
+  }
+}
+
+class IntroductionWidget extends StatelessWidget {
+  const IntroductionWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return VStack(
+      [
+        [
+          " - Introduction".text.gray500.widest.sm.make(),
+          10.heightBox,
+          "@googledevexpert for Flutter, Firebase, Dart & Web.\nPublic Speaker, Blogger, Entrepreneur & YouTuber.\nFounder of MTechViral."
+              .text
+              .white
+              .xl3
+              .maxLines(5)
+              .make()
+              .w(context.isMobile
+                  ? context.screenWidth
+                  : context.percentWidth * 40),
+          20.heightBox,
+        ].vStack(),
+        ElevatedButton(
+          // Use ElevatedButton instead of RaisedButton
+          onPressed: () {
+            launch("https://mtechviral.com");
+          },
+          style: ElevatedButton.styleFrom(
+            primary: colours.accentColor,
+            onPrimary: colours.primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ),
+          child: "Visit mtechviral.com".text.make(),
+        ).h(50)
+      ],
+      alignment: MainAxisAlignment.spaceEvenly,
+    );
+  }
+}
+
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      Icons.code_rounded,
+      size: 50,
+      color: colours.accentColor,
     );
   }
 }
@@ -66,27 +145,8 @@ class PictureWidget extends StatelessWidget {
   }
 }
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          Icons
-              .code_rounded, // Replace with your custom icon or use a valid Icon.
-          size: 50,
-          color: Colors.blue, // Replace with your desired color.
-        ),
-        // Add other widgets for your app bar as needed.
-      ],
-    );
-  }
-}
-
 class SocialAccounts extends StatelessWidget {
-  const SocialAccounts({super.key});
+  const SocialAccounts({Key? key});
 
   @override
   Widget build(BuildContext context) {
